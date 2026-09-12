@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>改行クリーナー｜PDF・メールのコピペ改行を削除して整形する無料ツール</title>
+<meta name="description" content="PDFやメール、Webからコピーした文章の余計な改行を削除し、段落を保ったまま読みやすく整形する無料ツール。行末ハイフンの結合や余分な空白の除去にも対応。ブラウザ内で完結し、テキストは外部に送信しません。">
+<meta name="keywords" content="改行 削除,改行 削除 ツール,PDF コピペ 改行,改行 まとめる,改行 消す,文章 整形,テキスト 一行にする,余分な改行,無料ツール">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0E8A6E">
+<link rel="canonical" href="https://kaigyo-cleaner.pages.dev/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="改行クリーナー">
+<meta property="og:title" content="改行クリーナー｜PDF・メールのコピペ改行を削除して整形する無料ツール">
+<meta property="og:description" content="コピペで崩れた余計な改行を、段落を保ったまま削除して整形。行末ハイフン結合・空白整理にも対応。ブラウザ内で完結し、テキストは外部に送信しません。">
+<meta property="og:url" content="https://kaigyo-cleaner.pages.dev/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="改行クリーナー｜コピペ改行の削除・整形ツール">
+<meta name="twitter:description" content="PDF・メールのコピペで崩れた改行を、段落を保ったまま削除。無料・ブラウザ内で完結。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "改行クリーナー",
+      "url": "https://kaigyo-cleaner.pages.dev/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "description": "PDFやメールからコピーした文章の余計な改行を、段落を保ったまま削除して整形する無料ツール。",
+      "inLanguage": "ja",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "無料で使えますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、完全無料で使えます。会員登録も不要で、回数制限もありません。" } },
+        { "@type": "Question", "name": "入力したテキストは外部に送信されますか？", "acceptedAnswer": { "@type": "Answer", "text": "いいえ。すべての処理はあなたのブラウザ内（端末内）で完結し、入力したテキストがサーバーに送信されることはありません。" } },
+        { "@type": "Question", "name": "PDFからコピペした文章の改行も消せますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。PDFやメールをコピーすると1行ごとに改行が入りがちですが、本ツールは段落（空行）を保ったまま、段落内の余計な改行だけを削除して1つの文章にまとめます。" } },
+        { "@type": "Question", "name": "段落は残せますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。「段落を保持」をオンにすると、空行で区切られた段落はそのまま残し、段落の中の改行だけをつなげます。オフにするとすべての改行を削除して1つのかたまりにします。" } }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+  :root{
+    --bg:#EAEEF2;
+    --surface:#FFFFFF;
+    --surface-2:#F3F6F8;
+    --ink:#1B2733;
+    --ink-soft:#566575;
+    --ink-faint:#8695A4;
+    --line:#D7DEE5;
+    --line-strong:#C2CCD5;
+    --accent:#0E8A6E;
+    --accent-ink:#0A6B56;
+    --accent-soft:#DBEFE8;
+    --danger:#BD4630;
+    --danger-soft:#F6E2DC;
+    --shadow:0 1px 2px rgba(27,39,51,.05),0 8px 24px rgba(27,39,51,.06);
+    --radius:14px;
+    --font-display:"Zen Kaku Gothic New","Noto Sans JP",system-ui,sans-serif;
+    --font-body:"Noto Sans JP",system-ui,sans-serif;
+    --font-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme:dark){
+      --bg:#0F141A;
+      --surface:#171F28;
+      --surface-2:#1D2731;
+      --ink:#E8EDF2;
+      --ink-soft:#98A7B6;
+      --ink-faint:#6C7B8A;
+      --line:#293641;
+      --line-strong:#37454F;
+      --accent:#34C9A5;
+      --accent-ink:#54D9B8;
+      --accent-soft:#123A31;
+      --danger:#E67A60;
+      --danger-soft:#3A201A;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0F141A;
+    --surface:#171F28;
+    --surface-2:#1D2731;
+    --ink:#E8EDF2;
+    --ink-soft:#98A7B6;
+    --ink-faint:#6C7B8A;
+    --line:#293641;
+    --line-strong:#37454F;
+    --accent:#34C9A5;
+    --accent-ink:#54D9B8;
+    --accent-soft:#123A31;
+    --danger:#E67A60;
+    --danger-soft:#3A201A;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 56px}
+
+  header{margin-bottom:22px}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent-ink);font-weight:700;
+    display:flex;align-items:center;gap:8px;margin-bottom:10px;
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px}
+  h1{
+    font-family:var(--font-display);font-weight:900;
+    font-size:clamp(28px,5vw,40px);line-height:1.15;margin:0 0 8px;
+    letter-spacing:-.01em;text-wrap:balance;
+  }
+  .tagline{color:var(--ink-soft);font-size:15px;max-width:60ch;margin:0}
+  .tagline b{color:var(--ink);font-weight:700}
+
+  .toolbar{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin:22px 0 16px;
+  }
+  .chip{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:8px 13px;border-radius:999px;cursor:pointer;user-select:none;
+    background:var(--surface);border:1px solid var(--line);
+    font-size:13px;font-weight:500;color:var(--ink-soft);
+    transition:background .15s,border-color .15s,color .15s;
+  }
+  .chip:hover{border-color:var(--line-strong)}
+  .chip input{position:absolute;opacity:0;width:0;height:0}
+  .chip .box{
+    width:16px;height:16px;border-radius:5px;border:1.5px solid var(--line-strong);
+    display:grid;place-items:center;flex:none;transition:.15s;
+  }
+  .chip .box svg{width:11px;height:11px;stroke:#fff;stroke-width:3;fill:none;opacity:0;transition:.12s}
+  .chip:has(input:checked){background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+  .chip:has(input:checked) .box{background:var(--accent);border-color:var(--accent)}
+  .chip:has(input:checked) .box svg{opacity:1}
+  .chip:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+  .spacer{flex:1 1 auto}
+  .btn{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:8px 14px;border-radius:999px;cursor:pointer;
+    font-family:var(--font-body);font-size:13px;font-weight:700;
+    border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);
+    transition:.15s;
+  }
+  .btn:hover{border-color:var(--line-strong);color:var(--ink)}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .panel{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:var(--shadow);
+    display:flex;flex-direction:column;overflow:hidden;min-height:340px;
+  }
+  .panel-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:13px 16px;border-bottom:1px solid var(--line);gap:10px;
+  }
+  .panel-title{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px}
+  .panel-title .dot{width:8px;height:8px;border-radius:50%;flex:none}
+  .dot.in{background:var(--ink-faint)}
+  .dot.out{background:var(--accent)}
+  .panel-title small{color:var(--ink-faint);font-weight:500;font-size:12px}
+  .count{font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);font-weight:500}
+
+  textarea{
+    flex:1;width:100%;border:0;resize:none;padding:16px;
+    font-family:var(--font-body);font-size:15px;line-height:1.9;
+    color:var(--ink);background:transparent;outline:none;min-height:260px;
+  }
+  textarea::placeholder{color:var(--ink-faint)}
+
+  .out-body{flex:1;overflow:auto;padding:16px;font-size:15px;line-height:1.9;white-space:pre-wrap;word-break:break-word}
+  .copy-wrap{padding:12px 16px;border-top:1px solid var(--line);display:flex;justify-content:flex-end}
+  .copy{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent);color:#fff;border:0;cursor:pointer;
+    padding:9px 18px;border-radius:999px;font-family:var(--font-body);
+    font-weight:700;font-size:13.5px;transition:transform .1s,filter .15s;
+  }
+  .copy:hover{filter:brightness(1.06)}
+  .copy:active{transform:translateY(1px)}
+  .copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .copy.done{background:var(--accent-ink)}
+
+  .stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;
+  }
+  .stat{
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;
+  }
+  .stat .k{font-size:11.5px;color:var(--ink-faint);font-weight:500;letter-spacing:.02em}
+  .stat .v{font-family:var(--font-mono);font-weight:700;font-size:22px;margin-top:3px;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .stat .v .u{font-size:12px;color:var(--ink-faint);margin-left:3px;font-weight:500}
+  .stat.hl .v{color:var(--accent-ink)}
+
+  footer{margin-top:24px;color:var(--ink-faint);font-size:12.5px;line-height:1.7}
+  footer code{font-family:var(--font-mono);background:var(--surface-2);padding:1px 6px;border-radius:5px;font-size:11.5px}
+
+  @media (max-width:760px){
+    .grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    .panel{min-height:auto}
+    textarea{min-height:180px}
+  }
+  .doc{max-width:66ch;margin:52px auto 0;display:flex;flex-direction:column;gap:38px}
+  .doc h2{
+    font-family:var(--font-display);font-weight:700;font-size:21px;line-height:1.3;
+    margin:0 0 14px;border-left:3px solid var(--accent);padding-left:13px;color:var(--ink);
+    text-wrap:balance;
+  }
+  .doc p{margin:0 0 12px;color:var(--ink-soft);font-size:15px;line-height:1.95}
+  .doc p:last-child{margin-bottom:0}
+  .doc b{color:var(--ink);font-weight:700}
+  .doc a{color:var(--accent-ink);font-weight:700;text-underline-offset:3px}
+  .doc ul,.doc ol{margin:0;padding-left:1.35em;color:var(--ink-soft);display:flex;flex-direction:column;gap:8px;font-size:15px}
+  .doc li{line-height:1.85}
+  .doc li::marker{color:var(--accent)}
+  .doc dl{margin:0;display:flex;flex-direction:column;gap:18px}
+  .doc dt{font-weight:700;color:var(--ink);font-size:15.5px;margin-bottom:5px;display:flex;gap:8px}
+  .doc dt::before{content:"Q.";color:var(--accent-ink);font-family:var(--font-mono);font-weight:700;flex:none}
+  .doc dd{margin:0;color:var(--ink-soft);font-size:15px;line-height:1.9;padding-left:1.7em}
+  .steps{list-style:none;padding:0;counter-reset:step;gap:12px}
+  .steps li{position:relative;padding-left:42px;line-height:1.8;color:var(--ink-soft)}
+  .steps li::before{
+    counter-increment:step;content:counter(step);
+    position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;
+    background:var(--accent-soft);color:var(--accent-ink);
+    display:grid;place-items:center;font-family:var(--font-mono);font-weight:700;font-size:13px;
+  }
+  @media (max-width:760px){.doc{margin-top:40px}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">改行 · Kaigyo Cleaner</div>
+    <h1>改行クリーナー</h1>
+    <p class="tagline">PDF・メール・Webから<b>コピペした文章の余計な改行を削除</b>し、<b>段落を保ったまま</b>読みやすく整形。ブラウザ内で完結し、テキストはどこにも送信しません。</p>
+  </header>
+
+  <div class="toolbar" role="group" aria-label="整形オプション">
+    <label class="chip"><input type="checkbox" id="opt-para" checked><span class="box"><svg viewBox="0 0 12 12"><path d="M2 6.5 5 9.5 10 3"/></svg></span>段落を保持</label>
+    <label class="chip"><input type="checkbox" id="opt-list" checked><span class="box"><svg viewBox="0 0 12 12"><path d="M2 6.5 5 9.5 10 3"/></svg></span>箇条書きを保持</label>
+    <label class="chip"><input type="checkbox" id="opt-hyphen" checked><span class="box"><svg viewBox="0 0 12 12"><path d="M2 6.5 5 9.5 10 3"/></svg></span>行末ハイフン結合</label>
+    <label class="chip"><input type="checkbox" id="opt-space" checked><span class="box"><svg viewBox="0 0 12 12"><path d="M2 6.5 5 9.5 10 3"/></svg></span>空白を整理</label>
+    <span class="spacer"></span>
+    <button class="btn" id="btn-sample" type="button">サンプル読込</button>
+    <button class="btn" id="btn-clear" type="button">クリア</button>
+  </div>
+
+  <div class="grid">
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title"><span class="dot in"></span>入力 <small>改行あり</small></div>
+        <span class="count" id="count-in">0 字</span>
+      </div>
+      <textarea id="src" spellcheck="false" placeholder="ここにPDFやメールからコピーした文章を貼り付けてください…"></textarea>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title"><span class="dot out"></span>出力 <small>整形後</small></div>
+        <span class="count" id="count-out">0 字</span>
+      </div>
+      <div class="out-body"><span id="out"></span></div>
+      <div class="copy-wrap">
+        <button class="copy" id="btn-copy" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span id="copy-label">整形後をコピー</span>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <div class="stats">
+    <div class="stat hl"><div class="k">削除した改行</div><div class="v"><span id="s-removed">0</span><span class="u">個</span></div></div>
+    <div class="stat hl"><div class="k">段落数</div><div class="v"><span id="s-para">0</span><span class="u">段落</span></div></div>
+    <div class="stat"><div class="k">文字数（前→後）</div><div class="v" style="font-size:17px"><span id="s-before">0</span> → <span id="s-after">0</span></div></div>
+    <div class="stat"><div class="k">行数（前→後）</div><div class="v" style="font-size:17px"><span id="s-lines">0 → 0</span></div></div>
+  </div>
+
+  <article class="doc">
+    <section>
+      <h2>改行クリーナーとは</h2>
+      <p>改行クリーナーは、<b>PDF・メール・Webページからコピーした文章に入り込む「余計な改行」を削除</b>して、読みやすい文章に整える無料ツールです。PDFやメールの本文をコピーすると、画面の見た目に合わせて1行ごとに改行が入り、そのまま貼り付けると文がブツ切れになってしまいます。本ツールは<b>段落（空行）を保ったまま、段落内の不要な改行だけをつなげて</b>、自然な文章に戻します。</p>
+      <p>すべての処理はあなたのブラウザ内（端末内）で完結し、<b>入力したテキストがサーバーに送信されることはありません</b>。社外秘の資料でも安心して使えます。</p>
+    </section>
+    <section>
+      <h2>使い方（3ステップ）</h2>
+      <ol class="steps">
+        <li>改行が崩れた文章を、左の「入力」欄に貼り付けます。</li>
+        <li>上のトグルで整形方法を選びます（初期状態のままでもOK）。</li>
+        <li>右の「出力」に整形結果が出るので、<b>「整形後をコピー」</b>で取得します。</li>
+      </ol>
+    </section>
+    <section>
+      <h2>できること</h2>
+      <ul>
+        <li><b>段落を保持</b>：空行で区切られた段落は残し、段落内の改行だけをつなげます（オフで全改行を削除）</li>
+        <li><b>箇条書きを保持</b>：「・」「-」「1.」などで始まる行は改行を残します</li>
+        <li><b>行末ハイフン結合</b>：英語PDFの「exam-（改行）ple」を「example」に結合</li>
+        <li><b>空白を整理</b>：連続した空白を1つにまとめ、行頭・行末の余分な空白を削除</li>
+        <li><b>賢い連結</b>：日本語はそのまま詰め、英単語どうしは半角スペースを入れて連結</li>
+      </ul>
+    </section>
+    <section>
+      <h2>こんなときに便利</h2>
+      <ul>
+        <li>PDFの本文をコピペしたら<b>1行ごとに改行</b>が入ってしまった</li>
+        <li>メールの引用や<b>受信文の改行</b>を消して1つの文章にまとめたい</li>
+        <li>Webページからコピーした<b>テキストの改行を削除</b>したい</li>
+        <li>文字起こしや原稿を、投稿・貼り付け用に<b>一続きの文章</b>にしたい</li>
+      </ul>
+    </section>
+    <section>
+      <h2>関連ツール</h2>
+      <p>話し言葉のケバ取り・整文には、姉妹ツールの<a href="https://seibun-cleaner.pages.dev/">整文クリーナー</a>もどうぞ。「えー」「あのー」などのフィラー除去や、議事録向けの箇条書き変換ができます。</p>
+    </section>
+    <section>
+      <h2>よくある質問</h2>
+      <dl>
+        <dt>無料で使えますか？</dt>
+        <dd>はい、完全無料で使えます。会員登録も不要で、回数制限もありません。</dd>
+        <dt>入力したテキストは外部に送信されますか？</dt>
+        <dd>いいえ。すべての処理はブラウザ内で完結し、入力したテキストがサーバーに送信されることはありません。</dd>
+        <dt>PDFからコピペした文章の改行も消せますか？</dt>
+        <dd>はい。段落（空行）を保ったまま、段落内の余計な改行だけを削除して1つの文章にまとめます。行末ハイフンの結合にも対応しています。</dd>
+        <dt>段落は残せますか？</dt>
+        <dd>はい。「段落を保持」をオンにすると、空行で区切られた段落はそのまま残します。オフにするとすべての改行を削除して1つのかたまりにします。</dd>
+      </dl>
+    </section>
+  </article>
+
+  <footer>
+    ※ 整形は<b>目安の自動処理</b>です。文の途中で意図的に改行している場合など、結果が意図と異なることがあります。最終チェックは人の目でどうぞ。<br>
+    処理はすべて端末内（<code>JavaScript</code>）で完結し、入力テキストはサーバーに送信されません。
+  </footer>
+</div>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const src=$('src'), out=$('out');
+  const opts={para:$('opt-para'),list:$('opt-list'),hyphen:$('opt-hyphen'),space:$('opt-space')};
+
+  const SAMPLE = "本日はお忙しい中、\nお集まりいただき\nありがとうございます。\nこれより第3回の\n定例会議を始めます。\n\n本日の議題は\n以下のとおりです。\n・前回議事録の確認\n・新機能のリリース\n予定について\n・次回日程の調整\n\nThis is an ex-\nample of a long\nEnglish sentence.";
+
+  // 箇条書き・番号付きの行頭かどうか
+  const isListLine = s => /^\s*(?:[・･•●○◦\-\*\+]|[0-9０-９]{1,3}[.)）、])\s*\S/.test(s);
+
+  function joinPara(para){
+    const lines = para.split('\n');
+    let removed = 0, out = '';
+    for(let i=0;i<lines.length;i++){
+      let line = lines[i];
+      if(opts.space.checked) line = line.replace(/[ \t　]+/g,' ').replace(/^\s+|\s+$/g,'');
+      if(i===0){ out = line; continue; }
+      if(line===''){ continue; }
+      if(opts.list.checked && isListLine(lines[i])){ out += '\n' + line; removed++; continue; }
+      const prev = out.slice(-1), next = line.charAt(0);
+      const sep = (/[A-Za-z0-9]/.test(prev) && /[A-Za-z0-9]/.test(next)) ? ' ' : '';
+      out += sep + line; removed++;
+    }
+    return { text: out, removed };
+  }
+
+  function normalize(raw){
+    let text = raw.replace(/\r\n?/g,'\n');
+    let removed = 0;
+    // 英語PDFの行末ハイフネーションを結合
+    if(opts.hyphen.checked){
+      text = text.replace(/([A-Za-z])-\n(?=[A-Za-z])/g, (m,a)=>{ removed++; return a; });
+    }
+    let result;
+    if(opts.para.checked){
+      const paras = text.split(/\n[ \t　]*\n+/);
+      const parts = paras.map(p=>{ const r=joinPara(p); removed+=r.removed; return r.text; }).filter(p=>p.length>0);
+      result = parts.join('\n\n');
+    }else{
+      const collapsed = text.replace(/\n[ \t　]*\n+/g,'\n');
+      const r = joinPara(collapsed); removed += r.removed; result = r.text;
+    }
+    if(opts.space.checked){
+      result = result.replace(/[ \t　]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').replace(/^\n+|\n+$/g,'');
+    }
+    return { text: result, removed };
+  }
+
+  let lastClean='';
+  function render(){
+    const raw=src.value;
+    const r=normalize(raw);
+    lastClean=r.text;
+    out.textContent=r.text;
+    $('s-removed').textContent=r.removed.toLocaleString();
+    const paras=r.text.trim()?r.text.split(/\n{2,}/).filter(s=>s.trim()).length:0;
+    $('s-para').textContent=paras;
+    $('s-before').textContent=raw.length.toLocaleString();
+    $('s-after').textContent=r.text.length.toLocaleString();
+    const lb=raw?raw.split('\n').length:0, la=r.text?r.text.split('\n').length:0;
+    $('s-lines').textContent=lb.toLocaleString()+' → '+la.toLocaleString();
+    $('count-in').textContent=raw.length.toLocaleString()+' 字';
+    $('count-out').textContent=r.text.length.toLocaleString()+' 字';
+  }
+
+  const btnCopy=$('btn-copy'), copyLabel=$('copy-label');
+  btnCopy.onclick=async()=>{
+    try{
+      await navigator.clipboard.writeText(lastClean);
+      btnCopy.classList.add('done');
+      copyLabel.textContent='コピーしました';
+      setTimeout(()=>{btnCopy.classList.remove('done');copyLabel.textContent='整形後をコピー';},1500);
+    }catch(e){
+      copyLabel.textContent='コピー失敗';
+      setTimeout(()=>copyLabel.textContent='整形後をコピー',1500);
+    }
+  };
+
+  $('btn-sample').onclick=()=>{src.value=SAMPLE;render();src.focus();};
+  $('btn-clear').onclick=()=>{src.value='';render();src.focus();};
+
+  src.addEventListener('input',render);
+  Object.values(opts).forEach(o=>o.addEventListener('change',render));
+
+  src.value=SAMPLE;
+  render();
+})();
+</script>
+</body>
+</html>
