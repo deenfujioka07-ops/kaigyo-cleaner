@@ -12,4 +12,4 @@ PDF・メール・Web からコピーした文章の余計な改行を削除し�
 
 ## 姉妹ツール
 
-- 整文クリーナー（話し言葉のケバ取り・整文）: https://seibun-cleaner.pages.dev/
+- 整文クリーナー（話し言葉のケバ取り・整文）: https://seibun.moji-tools.com/
